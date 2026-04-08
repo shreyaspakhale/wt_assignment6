@@ -1,5 +1,5 @@
-from flask import Flask, render_template
 import os
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -15,5 +15,4 @@ def not_found(e):
 def server_error(e):
     return render_template("500.html"), 500
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=81)
+app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
